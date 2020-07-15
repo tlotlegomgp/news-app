@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html>
 
+{% extends "index/header.html" %}
 {% load static %}
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Mzansi News</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'index/css/styles.min.css' %}">
-</head>
-
-<body><div class="newsletter8 py-5">
+{% block title %}Mzansi News{% endblock %}
+{% block content %}
+<!-- column{% include "index/snippets/nav.html" %}-->
+<div class="newsletter8 py-5">
   <div class="container">
     <div class="row">
-      <!-- column  -->
       <div class="col-lg-4">
         <h4 class="my-3">Get The News You Like</h4>
         <h6 class="subtitle mt-3 font-weight-normal">Sign up to get personalised news based on your searches and reading activity. The service is completely free and no fees will be charged.</h6>
@@ -43,45 +36,15 @@
           </div>
         </form>
       </div>
-      <!-- column  -->
       <div class="col-lg-8 ml-auto">
         <div class="d-block d-md-flex border-bottom pb-3 text-uppercase">
           <h6 class="no-shrink font-weight-medium align-self-center m-b-0">Latest News</h6>
         </div>
-        <div class="row blog-row mt-4 mb-3">
-          <div class="col-md-4">
-            <a href="#"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img12.jpg" alt="wrapkit" class="img-fluid" /></a>
-          </div>
-          <div class="col-md-8">
-            <h5><a href="#" class="text-decoration-none">The Universe is all of time and space and iafawfa wfaw daw daw daw daw d ad awd aw d awdawd aw daw dawdwa ts contents.</a></h5>
-            <p>by <a href="#" class="text-decoration-none">Mark Freeman</a> / 23 May 2017</p>
-          </div>
-        </div>
-        <div class="row blog-row my-3 mt-4">
-          <div class="col-md-4">
-            <a href="#"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img13.jpg" alt="wrapkit" class="img-fluid" /></a>
-          </div>
-          <div class="col-md-8">
-            <h5><a href="#" class="text-decoration-none">Pellentesque mollis eros quis massa interdum porta et vel.</a></h5>
-            <p>by <a href="#" class="text-decoration-none">Mark Freeman</a> / 23 May 2017</p>
-          </div>
-        </div>
-        <div class="row blog-row my-3 mt-4">
-          <div class="col-md-4">
-            <a href="#"><img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img14.jpg" alt="wrapkit" class="img-fluid" /></a>
-          </div>
-          <div class="col-md-8">
-            <h5><a href="#" class="text-decoration-none">Duis vel viverra quamam molesvulputate femy.</a></h5>
-            <p>by <a href="#" class="text-decoration-none">Mark Freeman</a> / 23 May 2017</p>
-          </div>
-        </div>
+        {% for article in articles %}
+            {% include "index/snippets/article.html" %}
+        {% endfor %}
       </div>
-      <!-- column  -->
     </div>
   </div>
 </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+{% endblock %}

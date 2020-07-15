@@ -1,0 +1,12 @@
+{% load static %}
+<div class="row blog-row mt-4 mb-3">
+    <div class="col-md-4">
+        <img href="{{article.url }}" src="{{ article.image_url }}}" alt="wrapkit" class="img-fluid" />
+    </div>
+    <div class="col-md-8">
+        <h5 class="text-decoration-none" href="{{article.url }}">{{article.title}}</h5>
+        <p href="{{article.url }}">{{article.description}}</p>
+        <p>by <a class="text-decoration-none">{{ author }}</a> at <a class="text-decoration-none">{{ source }}</a></p>
+        <p>Published: <a class="text-decoration-none">{{ date }}</a></p>
+    </div>
+</div>
