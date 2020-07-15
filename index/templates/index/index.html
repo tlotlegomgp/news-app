@@ -7,7 +7,7 @@
 <div class="newsletter8 py-5">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-md-4">
         {% if user.is_authenticated %}
         <br>
         <h4 class="my-3" style = "color: #BE8A60;">You are signed in</h4>
@@ -34,35 +34,35 @@
           <div class="form-group">
             <div class="my-1">
               <div class="custom-control custom-checkbox mr-sm-2">
-                <input type="checkbox" class="custom-control-input" id="customControlAutosizing1">
-                <label class="custom-control-label" for="customControlAutosizing1" style = "color: #BE8A60;">I have read and agree to the <a href="#" class="text-decoration-none" style="color: rgb(141, 149, 160)">terms and conditions</a></label>
+                <input type="checkbox" class="custom-control-input">
+                <a href="#" class="already" style="color: #BE8A60;">You already have an account? Click here to login.</a>
               </div>
             </div>
           </div>
         </form>
         {% endif %}
       </div>
-      <div class="col-lg-8 ml-auto">
-        {% if error_report %}
-          <div class="media">
-            <div class="media-body">
-                <br>
-                <h3 class="card-title text-center" style="padding: 10px; color: #BE8A60">No Results</h3>
-                <div class="card-text text-center" style="width: 100%;height: 100px;">
-                    <p class="card-text">There were no results matching your search for: "{{query}}".</p>
-                </div>
-            </div>
+      <div class="col-md-8 ml-auto">
+      {% if error_report %}
+        <div class="media">
+          <div class="media-body">
+              <br>
+              <h3 class="card-title text-center" style="padding: 10px; color: #BE8A60">No Results</h3>
+              <div class="card-text text-center" style="width: 100%;height: 100px;">
+                  <p class="card-text">There were no results matching your search for: "{{query}}".</p>
+              </div>
           </div>
-        {% else %}
-          <div class="d-block d-md-flex border-bottom pb-3 text-uppercase">
-            <h6 class="no-shrink font-weight-medium align-self-center m-b-0" style = "color: #BE8A60">Latest Top Stories</h6>
-          </div>
-          {% for article in articles %}
-              {% if article.urlToImage %}
-              {% include "index/snippets/article.html" %}
-              {% endif %}
-          {% endfor %}
-        {% endif %}
+        </div>
+      {% else %}
+        <div class="d-block d-md-flex border-bottom pb-3 text-uppercase">
+          <h6 class="no-shrink font-weight-medium align-self-center m-b-0" style = "color: #BE8A60">Latest Top Stories</h6>
+        </div>
+        {% for article in articles %}
+            {% if article.urlToImage %}
+            {% include "index/snippets/article.html" %}
+            {% endif %}
+        {% endfor %}
+      {% endif %}
       </div>
     </div>
   </div>
