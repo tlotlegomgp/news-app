@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-lg-4">
         <h4 class="my-3" style = "color: #BE8A60;">Get The News You Like</h4>
-        <h6 class="subtitle mt-3 font-weight-normal">Sign up to get personalised news based on your searches and reading activity. The service is completely free and no fees will be charged.</h6>
+        <h6 class="subtitle mt-3 font-weight-normal">Sign up to get personalised news based on your searches. Get the function to search for stories by topic, category, or location. The service is completely free and no fees will be charged.</h6>
         <form class="mt-4">
           <div class="form-group">
             {% for message in messages %}
@@ -29,7 +29,7 @@
             <div class="my-1">
               <div class="custom-control custom-checkbox mr-sm-2">
                 <input type="checkbox" class="custom-control-input" id="customControlAutosizing1">
-                <label class="custom-control-label" for="customControlAutosizing1">I have read and agree to the <a href="#" class="text-decoration-none">terms and conditions</a></label>
+                <label class="custom-control-label" for="customControlAutosizing1" style = "color: #BE8A60;">I have read and agree to the <a href="#" class="text-decoration-none" style="color: rgb(141, 149, 160)">terms and conditions</a></label>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
       </div>
       <div class="col-lg-8 ml-auto">
         <div class="d-block d-md-flex border-bottom pb-3 text-uppercase">
-          <h6 class="no-shrink font-weight-medium align-self-center m-b-0" style = "color: #BE8A60">Latest News</h6>
+          <h6 class="no-shrink font-weight-medium align-self-center m-b-0" style = "color: #BE8A60">Latest Top Stories</h6>
         </div>
         {% for article in articles %}
             {% if article.urlToImage %}
