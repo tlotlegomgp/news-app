@@ -1,17 +1,18 @@
 {% load static %}
+{% load tz %}
 <div class="row blog-row mt-4 mb-3">
     <div class="col-md-4">
-        <a href="#"><img href={{article.url}} src={{article.urlToImage}} alt="wrapkit" class="img-fluid" /></a>
+        <a  href={{article.url}}><img src={{article.urlToImage}} alt="wrapkit" class="img-fluid border rounded inline-block vertical-align: middle" /></a>
     </div>
     <div class="col-md-8">
-        <h5><a href={{article.url}} class="text-decoration-none">{{article.title}}</a></h5>
+        <h5><a href={{article.url}} class="text-decoration-none" style = "color: #BE8A60;">{{article.title}}</a></h5>
         {% if article.description %}
-        <p><a href={{article.url}} class="text-decoration-none">{{article.description}}</a></p>
+        <p><a href={{article.url}} class="text-decoration-none" style="color: rgb(141, 149, 160)">{{article.description}}</a></p>
         {% endif %}
         {% if article.author %}
-        <p>by <a class="text-decoration-none">{{ article.author }}</a></p>
+        <p>by <a class="text-decoration-none" style="color: #BE8A60;">{{ article.author }}</a></p>
         {% endif %}
-        <p>Published: <a class="text-decoration-none">{{ article.publishedAt }}</a></p>
+        <p>Published: <a class="text-decoration-none" style="color: #BE8A60;">{% localtime on %}{{article.publishedAt}}{% endlocaltime %}</a></p>
     </div>
 </div>
-<hr>
+<hr style = "background-color: #BE8A60;">
