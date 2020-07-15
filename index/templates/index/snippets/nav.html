@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-md sticky-top navigation-clean-search" style="height: 70px;background-color: #37434d;color: #ffffff;">
+    <div class="container"><a class="navbar-brand" href="{% url 'home_page' %}" style="color: rgb(255,255,255);">Mzansi News</a>
+        <button class="navbar-toggler text-truncate" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar collapse navbar-collapse" id="navcol-1">
+            <form method="GET" action="{% url 'home_page' %}" class="form-inline mr-auto" target="_self">{% csrf_token %}
+                <div class="form-group d-lg-flex" style="padding: 14px;">
+                    <label for="search-field"><i class="fa fa-search" style="color: rgb(255,255,255);padding: 10px;"></i></label><input class="form-control search-field" type="search" value= "{{query}}" name="q" id="search-field" style="width: 350px;background-color: rgb(255,255,255);height: 30px;margin: auto;color: #222222;">
+                </div>
+            </form>
+            {% if user.is_authenticated %}
+            <a class="btn action-button align-items-center align-content-center" role="button" href="{% url 'logout' %}" style="background-color: #66d7d7;">Sign Out</a>
+            {% else %}
+            <a class="btn action-button align-items-center align-content-center" role="button" href="#" style="background-color: #66d7d7;">Sign In</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
