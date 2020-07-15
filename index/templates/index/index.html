@@ -40,7 +40,9 @@
           <h6 class="no-shrink font-weight-medium align-self-center m-b-0">Latest News</h6>
         </div>
         {% for article in articles %}
+            {% if article.urlToImage %}
             {% include "index/snippets/article.html" %}
+            {% endif %}
         {% endfor %}
       </div>
     </div>

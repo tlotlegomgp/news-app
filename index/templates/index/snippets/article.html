@@ -1,12 +1,17 @@
 {% load static %}
 <div class="row blog-row mt-4 mb-3">
     <div class="col-md-4">
-        <img href="{{article.url }}" src="{{ article.image_url }}}" alt="wrapkit" class="img-fluid" />
+        <a href="#"><img href={{article.url}} src={{article.urlToImage}} alt="wrapkit" class="img-fluid" /></a>
     </div>
     <div class="col-md-8">
-        <h5 class="text-decoration-none" href="{{article.url }}">{{article.title}}</h5>
-        <p href="{{article.url }}">{{article.description}}</p>
-        <p>by <a class="text-decoration-none">{{ author }}</a> at <a class="text-decoration-none">{{ source }}</a></p>
-        <p>Published: <a class="text-decoration-none">{{ date }}</a></p>
+        <h5><a href={{article.url}} class="text-decoration-none">{{article.title}}</a></h5>
+        {% if article.description %}
+        <p><a href={{article.url}} class="text-decoration-none">{{article.description}}</a></p>
+        {% endif %}
+        {% if article.author %}
+        <p>by <a class="text-decoration-none">{{ article.author }}</a></p>
+        {% endif %}
+        <p>Published: <a class="text-decoration-none">{{ article.publishedAt }}</a></p>
     </div>
 </div>
+<hr>
