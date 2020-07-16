@@ -24,7 +24,7 @@ def convert_from_uct_to_local_time(date_time):
 def index_page(request):
     context = {}
     API_KEY = os.environ.get('NEWSAPI_KEY')
-    headlines_url = 'http://newsapi.org/v2/top-headlines?''country=za&''pageSize=100&''&apiKey={}'
+    headlines_url = 'http://newsapi.org/v2/top-headlines?''country=za&''pageSize=100&''apiKey={}'
     query_url = 'https://newsapi.org/v2/everything?q={}&sortBy=publishedAt&language=en&apiKey={}'
 
     if request.method == "POST":
