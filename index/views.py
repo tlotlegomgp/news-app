@@ -27,23 +27,13 @@ def index_page(request):
     headlines_url = 'http://newsapi.org/v2/top-headlines?''country=za&''pageSize=100&''apiKey={}'
     query_url = 'https://newsapi.org/v2/everything?q={}&sortBy=publishedAt&language=en&apiKey={}'
 
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
-        context['form'] = form
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            if User.objects.filter(username = username).exists():
-                messages.error(request,'Username, ' + username + ', is already in use.')
-            else:
-                user = User.objects.create_user(username = username, password = password)
-                user.save()
-                login(request, user)
-                return redirect('home_page')
+    if request.method == "GET" and 'q' in request.GET:
 
-    elif request.method == "GET" and 'q' in request.GET:
+        if request.user.is_authenticated:
+            query = request.GET['q']
+        else:
+            return redirect('login')
 
-        query = request.GET['q']
         response = requests.get(query_url.format(query, API_KEY)).json()
 
         if response['totalResults'] == 0:
@@ -51,7 +41,7 @@ def index_page(request):
             context['query'] = query
 
         else:
-            #Convert timezones from UTC to localtime and format the datetime output
+            #Convert timezones from UTC to localtime and format the datetime outputs
             for a in response['articles']:
                 a['publishedAt'] = convert_from_uct_to_local_time(a['publishedAt'])
 
@@ -69,6 +59,50 @@ def index_page(request):
         context['articles'] = response['articles']
 
     return render(request, 'index/index.html', context)
+
+
+def register_view(request):
+
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            if User.objects.filter(username = username).exists():
+                messages.error(request,'Username, ' + username + ', is already in use.')
+            else:
+                user = User.objects.create_user(username = username, password = password)
+                user.save()
+                login(request, user)
+                return redirect('home_page')
+
+    else:
+        form = RegisterForm()
+
+    return render(request, 'index/register.html', {'form': form})
+
+
+def login_view(request):
+
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+                return redirect('home_page')
+            else:
+                messages.error(request,'Username or Password entered incorrect.')
+            
+            
+    else:
+        form = RegisterForm()
+        
+    return render(request, 'index/login.html', {'form': form})
 
 
 def logout_view(request):

@@ -1,0 +1,29 @@
+{% extends 'index/header.html' %}
+{% block title %}Sign In{% endblock %}
+{% load static %}
+{% block content %}
+<div class="form-login" style="background-color: #BE8A60">
+    <form method="POST" action="{% url 'login' %}" style="background-color: rgb(25, 34, 39)" class="mt-4">{% csrf_token %}
+        <h2 class="sr-only">Login Form</h2>
+        <h2 style="color: #BE8A60;">Welcome to Mzansi News</h2>
+        <div class="illustration"></div>
+        <div class="form-group">
+            {% for message in messages %}
+                <div class="alert alert-danger">
+                    <a class="close" href="#" data-dismiss="alert">×</a>
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            {{ form.password }}
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit" style="background-color: #BE8A60;color: rgb(25, 34, 39);">Log In</button>
+        </div>
+        <a class="forgot" style="padding: 9px; color: #BE8A60";">New to the service?</a>
+        <button class="btn btn-block" onclick="location.href='/register'" type="button" style="border-style: solid;border-color: #BE8A60;color: #BE8A60;">Sign Up</button>
+    </form>
+</div>
+{% endblock %}
