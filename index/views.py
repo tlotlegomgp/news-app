@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import requests
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from dateutil import tz
 
 # Create your views here.
