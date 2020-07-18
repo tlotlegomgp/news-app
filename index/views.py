@@ -47,18 +47,6 @@ def index_page(request):
 
             context['articles'] = response['articles']
 
-    elif request.method == "POST":
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            if User.objects.filter(username = username).exists():
-                messages.error(request,'Username, ' + username + ', is already in use.')
-            else:
-                user = User.objects.create_user(username = username, password = password)
-                user.save()
-                login(request, user)
-                return redirect('home_page')
     else:
         form = RegisterForm()
         context['form'] = form
