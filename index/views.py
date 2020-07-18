@@ -16,7 +16,7 @@ def convert_from_utc_to_local_time(date_time):
 
     utc = datetime.strptime(date_time,"%Y-%m-%dT%H:%M:%SZ")
     utc = utc.replace(tzinfo=utc_zone)
-    central = utc + datetime.timedelta(hours = 2)
+    central = utc + timedelta(hours = 2)
     localtime = central.strftime("%Y-%b-%d %H:%M%p")
     return localtime
 
