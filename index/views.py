@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from . forms import RegisterForm
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import requests
@@ -11,7 +10,7 @@ from dateutil import tz
 
 # Create your views here.
 
-def convert_from_uct_to_local_time(date_time):
+def convert_from_utc_to_local_time(date_time):
     from_zone = tz.tzutc()
     to_zone = tz.tzlocal()
 
@@ -20,6 +19,7 @@ def convert_from_uct_to_local_time(date_time):
     central = utc.astimezone(to_zone)
     localtime = central.strftime("%Y-%b-%d %H:%M%p")
     return localtime
+
 
 def index_page(request):
     context = {}
@@ -43,7 +43,7 @@ def index_page(request):
         else:
             #Convert timezones from UTC to localtime and format the datetime outputs
             for a in response['articles']:
-                a['publishedAt'] = convert_from_uct_to_local_time(a['publishedAt'])
+                a['publishedAt'] = convert_from_utc_to_local_time(a['publishedAt'])
 
             context['articles'] = response['articles']
 
@@ -54,7 +54,7 @@ def index_page(request):
 
         #Convert timezones from UTC to localtime and format the datetime output
         for a in response['articles']:
-            a['publishedAt'] = convert_from_uct_to_local_time(a['publishedAt'])
+            a['publishedAt'] = convert_from_utc_to_local_time(a['publishedAt'])
 
         context['articles'] = response['articles']
 
