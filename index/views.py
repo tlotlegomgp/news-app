@@ -59,7 +59,6 @@ def index_page(request):
                 user.save()
                 login(request, user)
                 return redirect('home_page')
-                
     else:
         form = RegisterForm()
         context['form'] = form
