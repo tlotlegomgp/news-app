@@ -11,8 +11,8 @@ from dateutil import tz
 # Create your views here.
 
 def convert_from_utc_to_local_time(date_time):
-    from_zone = tz.tzutc()
-    to_zone = tz.tzlocal()
+    from_zone = tz.gettz('UTC')
+    to_zone = tz.gettz('Etc/GMT+2')
 
     utc = datetime.strptime(date_time,"%Y-%m-%dT%H:%M:%SZ")
     utc = utc.replace(tzinfo=from_zone)
@@ -47,6 +47,19 @@ def index_page(request):
 
             context['articles'] = response['articles']
 
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            if User.objects.filter(username = username).exists():
+                messages.error(request,'Username, ' + username + ', is already in use.')
+            else:
+                user = User.objects.create_user(username = username, password = password)
+                user.save()
+                login(request, user)
+                return redirect('home_page')
+                
     else:
         form = RegisterForm()
         context['form'] = form
