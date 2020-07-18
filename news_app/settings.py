@@ -29,8 +29,7 @@ SECRET_KEY = os.environ.get("NEWS_APP_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.herokuapp.com']
-
+ALLOWED_HOSTS = ['mzansinews.herokuapp.com']
 
 # Application definition
 
@@ -127,6 +126,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_STORAGE = 'whitenoise.storage.Compressed.ManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.Compressed.ManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
