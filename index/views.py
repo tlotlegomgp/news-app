@@ -11,13 +11,13 @@ from dateutil import tz
 # Create your views here.
 
 def convert_from_utc_to_local_time(date_time):
-    from_zone = tz.gettz('UTC')
-    to_zone = tz.gettz('Etc/GMT+2')
+    #from_zone = tz.gettz('UTC')
+    #to_zone = tz.gettz('Etc/GMT+2')
 
     utc = datetime.strptime(date_time,"%Y-%m-%dT%H:%M:%SZ")
-    utc = utc.replace(tzinfo=from_zone)
-    central = utc.astimezone(to_zone)
-    localtime = central.strftime("%Y-%b-%d %H:%M%p")
+    #utc = utc.replace(tzinfo=from_zone)
+    #central = utc.astimezone(to_zone)
+    localtime = utc.strftime("%Y-%b-%d %H:%M%p")
     return localtime
 
 
