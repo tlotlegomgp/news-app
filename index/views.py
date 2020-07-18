@@ -47,7 +47,7 @@ def index_page(request):
 
             context['articles'] = response['articles']
 
-    if request.method == "POST":
+    elif request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data["username"]
