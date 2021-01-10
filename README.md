@@ -2,7 +2,7 @@
 
 https://mzansinews.herokuapp.com/
 
-News hub web app. The app uses a free to use NEWS API to pull in all the news articles from different multiple sources across the world. Users can query the news they want by searching for articles by name, category, or news source.
+A news articles website. Gathers all the headlines from all the major news networks. Users can sign up to get access to the site's search functionality, which allows them to search for news based on location, category, or topic. Made use of NEWS-API to make calls for the data.
 
 Hosted on Heroku using a free plan. Site might take a moment to open on first launch.
 
