@@ -1,30 +1,41 @@
-{% extends 'index/header.html' %}
-{% block title %}Register{% endblock %}
-{% load static %}
-{% block content %}
-<div class="form-login" style="background-color: rgb(25, 34, 39); color: rgb(25, 34, 39);">
-    <form method="POST" action="{% url 'register' %}" style="background-color: #BE8A60" class="mt-4">{% csrf_token %}
-        <h2 class="sr-only">Login Form</h2>
-        <h2 style="color: rgb(25, 34, 39);padding: 12px;">Registration</h2>
-        <p style="color: rgb(25, 34, 39);">Register to get access to the search functionality that allows you to search for the news that you like most.</p>
-        <div class="illustration"></div>
-        <div class="form-group">
-        {% for message in messages %}
-            <div class="alert alert-danger">
-                <a class="close" href="#" data-dismiss="alert">×</a>
-                {{ message }}
-            </div>
-        {% endfor %}
-        {{ form.username }}
-        </div>
-        <div class="form-group">
-        {{ form.password }}
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit" style="background-color: rgb(25, 34, 39);color: rgb(193,186,186);">Register</button>
-        </div>
-        <a class="forgot" style="padding: 9px; color: rgb(25, 34, 39);">Already Registered?</a>
-        <button class="btn btn-block" type="button" onclick="location.href='/login'" style="border-style: solid;border-color: rgb(25, 34, 39)">Login</button>
-    </form>
+{% extends 'index/header.html' %} {% block title %}Register{% endblock %} {% load static %} {% block content %}
+<div class="form-login" style="background-color: rgb(25, 34, 39); color: rgb(25, 34, 39)">
+	<form method="POST" action="{% url 'register' %}" style="background-color: #be8a60" class="mt-4">
+		{% csrf_token %}
+		<h2 class="sr-only">Login Form</h2>
+		<h2 style="color: rgb(25, 34, 39); padding: 12px">Registration</h2>
+		<p style="color: rgb(25, 34, 39)">
+			Register to get access to the search functionality that allows you to search for the news that you like
+			most.
+		</p>
+		<div class="illustration"></div>
+		<div class="form-group">
+			{% for message in messages %}
+			<div class="alert alert-danger">
+				<a class="close" href="#" data-dismiss="alert">×</a>
+				{{ message }}
+			</div>
+			{% endfor %} {{ form.username }}
+		</div>
+		<div class="form-group">{{ form.password }}</div>
+		<div class="form-group">
+			<button
+				class="btn btn-primary btn-block"
+				type="submit"
+				style="background-color: rgb(25, 34, 39); color: rgb(193, 186, 186)"
+			>
+				Register
+			</button>
+		</div>
+		<a class="forgot" style="padding: 9px; color: rgb(25, 34, 39)">Already Registered?</a>
+		<button
+			class="btn btn-block"
+			type="button"
+			onclick="location.href='/login'"
+			style="border-style: solid; border-color: rgb(25, 34, 39)"
+		>
+			Login
+		</button>
+	</form>
 </div>
 {% endblock %}

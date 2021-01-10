@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get("NEWS_APP_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['mzansinews.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['mzansinews.herokuapp.com', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -83,8 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-} 
-
+}
 
 
 # Password validation
